@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, temp, speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Hit()
     {
-        print(collision.gameObject.tag);
+        print("hit");
     }
 }
