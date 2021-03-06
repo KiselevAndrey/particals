@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1551251291034995716}
+  - component: {fileID: 6251019995542908424}
+  - component: {fileID: 6517312907200674468}
   m_Layer: 0
   m_Name: Bonus
   m_TagString: Untagged
@@ -31,6 +33,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6251019995542908424
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551251291034995717}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
+--- !u!114 &6517312907200674468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551251291034995717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad22689dbb366154c902910686f13b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 8202763732895513972}
+  colider: {fileID: 6251019995542908424}
+  lifeTime: 5
 --- !u!1001 &1592543689068047179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168,6 +201,12 @@ PrefabInstance:
 --- !u!4 &8202763732895513970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7480417595368232505, guid: 13c838ae5cd52344b8adde416ef7dec9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1592543689068047179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8202763732895513972 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7480417595368232511, guid: 13c838ae5cd52344b8adde416ef7dec9,
     type: 3}
   m_PrefabInstance: {fileID: 1592543689068047179}
   m_PrefabAsset: {fileID: 0}

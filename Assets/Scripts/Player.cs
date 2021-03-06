@@ -17,4 +17,9 @@ public class Player : MonoBehaviour
     {
         print("hit");
     }
+
+    public void AddTrap()
+    {
+        print("trap");
+    }
 }
