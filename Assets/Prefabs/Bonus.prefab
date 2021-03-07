@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 8202763732895513972}
   colider: {fileID: 6251019995542908424}
-  lifeTime: 5
+  lifeTime: 10
 --- !u!1001 &1592543689068047179
 PrefabInstance:
   m_ObjectHideFlags: 0

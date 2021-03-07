@@ -356,6 +356,12 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!198 &583496709 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2134139512524498981, guid: 08b2b18bbd876504fbd4ceb2c95c1db8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1016847986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &679750631
 GameObject:
   m_ObjectHideFlags: 0
@@ -5334,6 +5340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  trapPrefab: {fileID: 6587134955620912385, guid: 377653ddc9007d84f8eba8e537fc5d0a,
+    type: 3}
+  trapAura: {fileID: 583496709}
+  _canHunting: 1
 --- !u!50 &1146878171
 Rigidbody2D:
   serializedVersion: 4
@@ -5386,7 +5396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1146878170}
-  tabooRadius: 5
+  tabooRadius: 8
   maxInstatiateRadius: 20
   enemyPrefab: {fileID: 1950665686694181161, guid: 64664414d5b890f489cdb745ef263d28,
     type: 3}
@@ -5394,8 +5404,8 @@ MonoBehaviour:
     type: 3}
   maxEnemyCount: 40
   maxBonusCount: 20
-  enemyRespawnTime: 3
-  bonusRespawnTime: 8
+  enemyRespawnTime: 5
+  bonusRespawnTime: 6
   enemyesCount: 0
   bonusesCount: 0
 --- !u!114 &1594404514

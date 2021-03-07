@@ -9,14 +9,15 @@ public class Enemy : MonoBehaviour
 
     [HideInInspector] public bool isGrow;
     [HideInInspector] public bool isChangedGrow;
+    [HideInInspector] public Folower2D folower;
 
     GameManager _gameManager;
-    Folower2D _folower;   
+    bool _isDie;
 
     #region Awake FixedUpdate
     private void Awake()
     {
-        _folower = GetComponent<Folower2D>();
+        folower = GetComponent<Folower2D>();
     }
 
     private void Start()
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        _folower.speed += modifier;
+        folower.speed += modifier;
     }
     #endregion
 
@@ -96,11 +97,14 @@ public class Enemy : MonoBehaviour
             Die();
     }
 
-    void Die()
+    public void Die()
     {
+        if (_isDie) return;
+
+        _isDie = true;
         colider.enabled = false;
         _gameManager.enemyesCount--;
-        _folower.speed = 0;
+        folower.speed = 0;
         modifier = 0;
         StartCoroutine(DestroyMe());
     }

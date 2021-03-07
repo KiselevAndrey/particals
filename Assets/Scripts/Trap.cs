@@ -1,28 +1,29 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Bonus : MonoBehaviour
+public class Trap : MonoBehaviour
 {
-    public ParticleSystem particle;
-    [SerializeField] Collider2D colider;
     [SerializeField, Min(0)] float lifeTime;
+    [SerializeField] Collider2D colider;
+    [SerializeField] ParticleSystem particle;
 
-    GameManager _gameManager;
-    float _timeLived;
+    List<Enemy> cathedEnemes = new List<Enemy>();
 
-    #region Awake Update
-    private void Start()
+    void Update()
     {
-        _gameManager = FindObjectOfType<GameManager>();
+        if (lifeTime <= 0) KillEnemies();
+        lifeTime -= Time.deltaTime;
     }
 
-    private void Update()
+    void KillEnemies()
     {
-        if (_timeLived >= lifeTime) Die();
-
-        _timeLived += Time.deltaTime;
+        for (int i = 0; i < cathedEnemes.Count; i++)
+        {
+            cathedEnemes[i].Die();
+        }
+        Die();
     }
-    #endregion
 
     #region Trigger
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,26 +32,10 @@ public class Bonus : MonoBehaviour
         {
             case TagsNames.Enemy:
                 Enemy enemy = collision.GetComponent<Enemy>();
-                AddEnemyScale(enemy);
-                break;
-
-            case TagsNames.Player:
-                Player player = collision.GetComponent<Player>();
-                player.ActiveTrap(true);
+                cathedEnemes.Add(enemy);
+                enemy.folower.target = transform;
                 break;
         }
-
-        Die();
-    }
-    #endregion
-
-    #region ChangeScale
-    void AddEnemyScale(Enemy enemy)
-    {
-        Vector3 temp = Vector3.one;
-
-        enemy.transform.localScale += temp;
-        enemy.particle.transform.localScale += temp;
     }
     #endregion
 
@@ -58,7 +43,6 @@ public class Bonus : MonoBehaviour
     void Die()
     {
         colider.enabled = false;
-        _gameManager.bonusesCount--;
         StartCoroutine(DestroyMe());
     }
 

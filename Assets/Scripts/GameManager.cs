@@ -24,11 +24,11 @@ public class GameManager : MonoBehaviour
 
     float _enemyCurrentRespawnTime = 0f;
     float _bonusCurrentRespawnTime = 0f;
+    bool _gamePlay;
 
     #region Start Update
     private void Start()
-    {
-        CreatePrefab(enemyPrefab, ref enemyesCount);       
+    { 
     }
     void Update()
     {
@@ -67,6 +67,26 @@ public class GameManager : MonoBehaviour
         // проверка на табу радиус
         if (Mathf.Abs(((Vector2)(newPosition - player.transform.position)).magnitude) < tabooRadius) return FindInstatiatePosition();
         else return newPosition;
+    }
+    #endregion
+
+    #region GameOver
+    public void GameOver()
+    {
+        if (_gamePlay) return;
+
+        _gamePlay = false;
+
+    }
+
+    public void NewGame()
+    {
+        _gamePlay = true;
+
+        _enemyCurrentRespawnTime = 0f;
+        _bonusCurrentRespawnTime = 0f;
+
+        CreatePrefab(enemyPrefab, ref enemyesCount);
     }
     #endregion
 }
