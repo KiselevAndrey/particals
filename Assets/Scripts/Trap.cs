@@ -7,6 +7,7 @@ public class Trap : MonoBehaviour
     [SerializeField, Min(0)] float lifeTime;
     [SerializeField] Collider2D colider;
     [SerializeField] ParticleSystem particle;
+    [SerializeField] ParticleSystem explosion;
 
     List<Enemy> cathedEnemes = new List<Enemy>();
 
@@ -34,6 +35,7 @@ public class Trap : MonoBehaviour
                 Enemy enemy = collision.GetComponent<Enemy>();
                 cathedEnemes.Add(enemy);
                 enemy.folower.target = transform;
+                enemy.colider.enabled = false;
                 break;
         }
     }
@@ -43,20 +45,7 @@ public class Trap : MonoBehaviour
     void Die()
     {
         colider.enabled = false;
-        StartCoroutine(DestroyMe());
-    }
-
-    IEnumerator DestroyMe()
-    {
-        while (transform.localScale.magnitude > 0.1f)
-        {
-            Vector3 temp = transform.localScale * 0.1f;
-
-            transform.localScale -= temp;
-            particle.transform.localScale -= temp;
-
-            yield return new WaitForSeconds(0.1f);
-        }
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     #endregion

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-enum MoveType { Lerp, MoveTowards, Velocity}
+enum MoveType { Lerp, MoveTowards, Velocity, Current}
 
 public class Folower2D : MonoBehaviour
 {
@@ -45,6 +45,10 @@ public class Folower2D : MonoBehaviour
 
             case MoveType.Velocity:
                 transform.position = temp + (Vector3)_targetRB.velocity * speed * (isForvard ? 1 : -1);
+                break;
+
+            case MoveType.Current:
+                transform.position = temp;
                 break;
         }
     }

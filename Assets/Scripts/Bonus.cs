@@ -9,13 +9,9 @@ public class Bonus : MonoBehaviour
 
     GameManager _gameManager;
     float _timeLived;
+    bool _isDie;
 
-    #region Awake Update
-    private void Start()
-    {
-        _gameManager = FindObjectOfType<GameManager>();
-    }
-
+    #region Update
     private void Update()
     {
         if (_timeLived >= lifeTime) Die();
@@ -55,8 +51,12 @@ public class Bonus : MonoBehaviour
     #endregion
 
     #region Die
-    void Die()
+    public void Die()
     {
+        if (_isDie) return;
+
+        _isDie = true;
+
         colider.enabled = false;
         _gameManager.bonusesCount--;
         StartCoroutine(DestroyMe());
@@ -75,5 +75,9 @@ public class Bonus : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    #endregion
+
+    #region SetGameManager
+    public void SetGameManager(GameManager gm) => _gameManager = gm;
     #endregion
 }

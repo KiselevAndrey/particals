@@ -6,19 +6,19 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject trapPrefab;
     [SerializeField] ParticleSystem trapAura;
 
-    public bool canHunting = true;
-    public bool canMove;
+    bool canHunting = true;
+    public bool canUpdate;
 
     void Update()
     {
+        if (!canUpdate) return;
+
         Move();
         Hunting();
     }
 
     void Move()
     {
-        if (!canMove) return;
-
         Vector3 temp = transform.position;
         temp.x += Input.GetAxis(AxesNames.Horizontal);
         temp.y += Input.GetAxis(AxesNames.Vertical);

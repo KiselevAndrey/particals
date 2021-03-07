@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
     public ParticleSystem particle;
     [SerializeField, Range(0f, 0.01f)] float modifier;
-    [SerializeField] Collider2D colider;
+    public Collider2D colider;
 
     [HideInInspector] public bool isGrow;
     [HideInInspector] public bool isChangedGrow;
@@ -18,11 +18,6 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         folower = GetComponent<Folower2D>();
-    }
-
-    private void Start()
-    {
-        _gameManager = FindObjectOfType<GameManager>();
     }
 
     void FixedUpdate()
@@ -42,8 +37,7 @@ public class Enemy : MonoBehaviour
                 break;
 
             case TagsNames.Player:
-                Player player = collision.GetComponent<Player>();
-                player.Hit();
+                _gameManager.GameOver();
                 Die();
                 break;
         }
@@ -122,5 +116,9 @@ public class Enemy : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    #endregion
+
+    #region SetGameManager
+    public void SetGameManager(GameManager gm) => _gameManager = gm;
     #endregion
 }
