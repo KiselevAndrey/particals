@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,8 +26,10 @@ public class GameManager : MonoBehaviour
 
     #region Start Update
     private void Start()
-    { 
+    {
+        GameOver();
     }
+
     void Update()
     {
         RespawnGameObjects(ref enemyesCount, maxEnemyCount, enemyRespawnTime, ref _enemyCurrentRespawnTime, enemyPrefab);
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         if (_gamePlay) return;
 
         _gamePlay = false;
-
+        player.canMove = false;
     }
 
     public void NewGame()
@@ -86,6 +86,10 @@ public class GameManager : MonoBehaviour
         _enemyCurrentRespawnTime = 0f;
         _bonusCurrentRespawnTime = 0f;
 
+        // уничтожить всех врагов и бонусы
+
+
+        player.canMove = true;
         CreatePrefab(enemyPrefab, ref enemyesCount);
     }
     #endregion

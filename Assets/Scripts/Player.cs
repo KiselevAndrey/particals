@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject trapPrefab;
     [SerializeField] ParticleSystem trapAura;
 
-    public bool _canHunting = true;
+    public bool canHunting = true;
+    public bool canMove;
 
     void Update()
     {
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
 
     void Move()
     {
+        if (!canMove) return;
+
         Vector3 temp = transform.position;
         temp.x += Input.GetAxis(AxesNames.Horizontal);
         temp.y += Input.GetAxis(AxesNames.Vertical);
@@ -27,7 +30,7 @@ public class Player : MonoBehaviour
     #region Trap
     void Hunting()
     {
-        if (Input.GetMouseButtonDown(0) && _canHunting)
+        if (Input.GetMouseButtonDown(0) && canHunting)
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.z = transform.position.z;
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour
 
     public void ActiveTrap(bool value)
     {
-        _canHunting = value;
+        canHunting = value;
         if (value) trapAura.Play();
         else trapAura.Stop();
     }
