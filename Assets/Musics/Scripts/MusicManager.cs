@@ -9,7 +9,9 @@ public class MusicManager : MonoBehaviour
     [SerializeField] ClipListSO clipList;
 
     [Header("UI elements")]
-    [SerializeField] Toggle musicToggle;
+    //[SerializeField] Toggle masterToggle;
+    //[SerializeField] Toggle musicToggle;
+    //[SerializeField] Toggle effectsToggle;
     [SerializeField] Slider masterVolSlider;
     [SerializeField] Slider musicVolSlider;
     [SerializeField] Slider effectsVolSlider;
@@ -80,7 +82,9 @@ public class MusicManager : MonoBehaviour
     void LoadMusicOptions()
     {
         // установка тоглов музыки и эффектов
-        //LoadToUI(musicToggle, gameStats.musicPlay, MixerGroup.VolumeBackGround);
+        //LoadToUI(masterToggle, musicStats.master, MixerGroup.MasterVolume);
+        //LoadToUI(musicToggle, musicStats.music, MixerGroup.MusicVolume);
+        //LoadToUI(effectsToggle, musicStats.effects, MixerGroup.EffectsVolume);
 
         // установка параметров slider
         LoadToUI(masterVolSlider, musicStats.master.volume, MixerGroup.MasterVolume);
@@ -92,25 +96,28 @@ public class MusicManager : MonoBehaviour
     /// <summary>
     /// установка значения на сам UI element и выстановление параметров в mixerGroup
     /// </summary>
-    void LoadToUI(Toggle toggle, bool value, string mixerGroup)
+    void LoadToUI(Toggle toggle, MusicOptionSO musicOption, string mixerGroup)
     {
-        toggle.isOn = value;    // кнопка самого toggle
-        SetFloatMixer(mixerGroup, value);
+        toggle.isOn = musicOption.play;    // кнопка самого toggle
+        SetFloatMixer(mixerGroup, musicOption, musicOption.play);
     }
 
     /// <summary>
     /// Сохраниение нового значения и установка его в mixerGroup
     /// </summary>
-    void NewValue(string mixerGroup, ref bool oldValue, bool newValue)
+    void NewValue(string mixerGroup, MusicOptionSO musicOption, bool newValue)
     {
-        SetFloatMixer(mixerGroup, newValue);
-        oldValue = newValue;
+        musicOption.play = newValue;
+        SetFloatMixer(mixerGroup, musicOption, newValue);
     }
 
     /// <summary>
     /// Вкл/выкл звука нужного mixerGroup
     /// </summary>
-    void SetFloatMixer(string mixerGroup, bool value) => mixer.audioMixer.SetFloat(mixerGroup, value ? 1 : -80);
+    void SetFloatMixer(string mixerGroup, MusicOptionSO musicOption, bool value)
+    {
+        mixer.audioMixer.SetFloat(mixerGroup, value ? SaveFloatToVolume(musicOption.volume) : -80);
+    }
     #endregion
 
     #region Sliders
@@ -135,15 +142,18 @@ public class MusicManager : MonoBehaviour
     /// <summary>
     /// Вкл/выкл звука нужного mixerGroup
     /// </summary>
-    void SetFloatMixer(string mixerGroup, float value) => mixer.audioMixer.SetFloat(mixerGroup, Mathf.Lerp(-50, 0, value));
+    void SetFloatMixer(string mixerGroup, float value) => mixer.audioMixer.SetFloat(mixerGroup, SaveFloatToVolume(value));
+
+    float SaveFloatToVolume(float value) => Mathf.Lerp(-80, 0, value);
     #endregion
 
     #region UIActions
-    //public void SwitchMusic(bool value) => NewValue(MixerGroup.VolumeBackGround, ref gameStats.musicPlay, value);
-    //public void SwitchEffects(bool value) => NewValue(MixerGroup.VolumeEffects, ref gameStats.effectsPlay, value);
+    public void SwitchMaster(bool value) => NewValue(MixerGroup.MasterVolume, musicStats.master, value);
+    public void SwitchMusic(bool value) => NewValue(MixerGroup.MusicVolume, musicStats.music, value);
+    public void SwitchEffects(bool value) => NewValue(MixerGroup.EffectsVolume, musicStats.effects, value);
 
     public void VolumeMaster(float value) => NewValue(MixerGroup.MasterVolume, ref musicStats.master.volume, value);
-    public void VolumeBackground(float value) => NewValue(MixerGroup.MusicVolume, ref musicStats.music.volume, value);
+    public void VolumeMusic(float value) => NewValue(MixerGroup.MusicVolume, ref musicStats.music.volume, value);
     public void VolumeEffects(float value) => NewValue(MixerGroup.EffectsVolume, ref musicStats.effects.volume, value);
     #endregion
 

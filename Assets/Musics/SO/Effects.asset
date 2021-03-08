@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Effects
   m_EditorClassIdentifier: 
   type: 2
-  play: 0
-  volume: 1
+  play: 1
+  volume: 0.192

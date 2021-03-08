@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609f42d04a3c24149b6d299c962d5b74, type: 3}
   m_Name: ClipListSO
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: ba2ba36c8f1238c4c929a12c2d87548c, type: 3}
   shuffleClip: 1

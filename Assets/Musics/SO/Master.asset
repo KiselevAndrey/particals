@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Master
   m_EditorClassIdentifier: 
   type: 0
-  play: 0
-  volume: 1
+  play: 1
+  volume: 0

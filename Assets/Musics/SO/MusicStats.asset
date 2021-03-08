@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e66c9e2762709147a7b4680634e96fb, type: 3}
   m_Name: MusicStats
   m_EditorClassIdentifier: 
-  master: {fileID: 0}
-  music: {fileID: 0}
-  effects: {fileID: 0}
+  master: {fileID: 11400000, guid: 274509f71f8ced04ba9240926bf39696, type: 2}
+  music: {fileID: 11400000, guid: f3202b927266af148b8447775cf4e768, type: 2}
+  effects: {fileID: 11400000, guid: a0c759522a4736343bff3ddee2f0a2ac, type: 2}

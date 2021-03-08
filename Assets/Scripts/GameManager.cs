@@ -170,4 +170,8 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    #region Доп функции
+    public void ResetRecord() => gameStats.record = 0f;
+    #endregion
 }

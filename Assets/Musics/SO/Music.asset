@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Music
   m_EditorClassIdentifier: 
   type: 1
-  play: 0
-  volume: 1
+  play: 1
+  volume: 0.502
