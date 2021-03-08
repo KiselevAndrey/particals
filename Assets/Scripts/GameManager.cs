@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject game;
     [SerializeField] Button btnStart;
     [SerializeField] GameStatSO gameStats;
+    [SerializeField] MusicManager music;
 
     [HideInInspector] public int enemyesCount;
     [HideInInspector] public int bonusesCount;
@@ -103,6 +104,8 @@ public class GameManager : MonoBehaviour
     {
         if (!_gamePlay) return;
 
+        music.ToMenuSnapshot();
+
         IsGame(false);
         Reset();
 
@@ -113,6 +116,8 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
+        music.ToNormalSnapshot();
+
         timerGame.SetTime(0);
 
         IsGame(true);

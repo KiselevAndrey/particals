@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     GameManager _gameManager;
     bool _isDie;
 
-    #region Awake FixedUpdate
+    #region Awake Start FixedUpdate
     private void Awake()
     {
         folower = GetComponent<Folower2D>();

@@ -2214,7 +2214,7 @@ Transform:
   - {fileID: 60032903}
   - {fileID: 1406531288}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &418855374
 MonoBehaviour:
@@ -2399,7 +2399,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &495744095
 AudioSource:
@@ -6044,7 +6044,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &905527985
 GameObject:
@@ -9810,6 +9810,7 @@ MonoBehaviour:
   game: {fileID: 215910628}
   btnStart: {fileID: 1600179678}
   gameStats: {fileID: 11400000, guid: 8a881e86408b265419fc7b48718bc2f9, type: 2}
+  music: {fileID: 495744093}
   enemyesCount: 0
   bonusesCount: 0
 --- !u!114 &1594404514
@@ -9841,7 +9842,7 @@ Transform:
   m_Children:
   - {fileID: 1999160926}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1600179676
 GameObject:

@@ -7,11 +7,22 @@ public class Bonus : MonoBehaviour
     [SerializeField] Collider2D colider;
     [SerializeField, Min(0)] float lifeTime;
 
+    [Header("Звуки")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip bornClip;
+    [SerializeField] AudioClip playerPickUp;
+    [SerializeField] AudioClip enemyPickUp;
+
     GameManager _gameManager;
     float _timeLived;
     bool _isDie;
 
-    #region Update
+    #region Start Update
+    private void Start()
+    {
+        PlayOneShot(bornClip);
+    }
+
     private void Update()
     {
         if (_timeLived >= lifeTime) Die();
@@ -28,15 +39,17 @@ public class Bonus : MonoBehaviour
             case TagsNames.Enemy:
                 Enemy enemy = collision.GetComponent<Enemy>();
                 AddEnemyScale(enemy);
+                PlayOneShot(enemyPickUp);
+                Die();
                 break;
 
             case TagsNames.Player:
                 Player player = collision.GetComponent<Player>();
                 player.ActiveTrap(true);
+                PlayOneShot(playerPickUp);
+                Die();
                 break;
         }
-
-        Die();
     }
     #endregion
 
@@ -77,7 +90,13 @@ public class Bonus : MonoBehaviour
     }
     #endregion
 
-    #region SetGameManager
+    #region Доп функции
     public void SetGameManager(GameManager gm) => _gameManager = gm;
+
+    void PlayOneShot(AudioClip clip)
+    {
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(clip);
+    }
     #endregion
 }
