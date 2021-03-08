@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: ClipListSO
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: ba2ba36c8f1238c4c929a12c2d87548c, type: 3}
+  - {fileID: 8300000, guid: 2d120bd370f441b4d922d69bb1dc550f, type: 3}
+  - {fileID: 8300000, guid: b51239a602a330649a54230bb286dc25, type: 3}
+  - {fileID: 8300000, guid: 7c976aaca426e674eae13f45c9d26cbe, type: 3}
+  - {fileID: 8300000, guid: eed1255227ece9349a46b4e426bc9a2c, type: 3}
+  - {fileID: 8300000, guid: 561841a25bd34b14fb9de970a0bfa00b, type: 3}
   shuffleClip: 1

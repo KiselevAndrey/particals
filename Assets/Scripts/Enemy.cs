@@ -7,6 +7,10 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0f, 0.01f)] float modifier;
     public Collider2D colider;
 
+    [Header("Звуки")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip bornClip;
+
     [HideInInspector] public bool isGrow;
     [HideInInspector] public bool isChangedGrow;
     [HideInInspector] public Folower2D folower;
@@ -18,6 +22,11 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         folower = GetComponent<Folower2D>();
+    }
+
+    private void Start()
+    {
+        PlayOneShot(bornClip);
     }
 
     void FixedUpdate()
@@ -118,7 +127,13 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
-    #region SetGameManager
+    #region Доп функции
     public void SetGameManager(GameManager gm) => _gameManager = gm;
+
+    void PlayOneShot(AudioClip clip)
+    {
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(clip);
+    }
     #endregion
 }
