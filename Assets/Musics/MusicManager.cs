@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+public enum MusicType { Master, Music, Effects }
+
 public class MusicManager : MonoBehaviour
 {
     [Header("Музыка")]
@@ -21,7 +23,7 @@ public class MusicManager : MonoBehaviour
 
     [Header("Данные доп")]
     [SerializeField] AudioMixerGroup mixer;
-    [SerializeField] GameStatSO gameStats;
+    [SerializeField] MusicStatSO musicStats;
 
     AudioSource _audioSource;
     float _musicLen;
@@ -83,9 +85,9 @@ public class MusicManager : MonoBehaviour
         //LoadToUI(musicToggle, gameStats.musicPlay, MixerGroup.VolumeBackGround);
 
         // установка параметров slider
-        LoadToUI(masterVolSlider, gameStats.masterVolume, MixerGroup.MasterVolume);
-        LoadToUI(musicVolSlider, gameStats.musicVolume, MixerGroup.MusicVolume);
-        LoadToUI(effectsVolSlider, gameStats.effectsVolume, MixerGroup.EffectsVolume);
+        LoadToUI(masterVolSlider, musicStats.master.volume, MixerGroup.MasterVolume);
+        LoadToUI(musicVolSlider, musicStats.music.volume, MixerGroup.MusicVolume);
+        LoadToUI(effectsVolSlider, musicStats.effects.volume, MixerGroup.EffectsVolume);
     }
 
     #region Toggle
@@ -142,9 +144,9 @@ public class MusicManager : MonoBehaviour
     //public void SwitchMusic(bool value) => NewValue(MixerGroup.VolumeBackGround, ref gameStats.musicPlay, value);
     //public void SwitchEffects(bool value) => NewValue(MixerGroup.VolumeEffects, ref gameStats.effectsPlay, value);
 
-    public void VolumeMaster(float value) => NewValue(MixerGroup.MasterVolume, ref gameStats.masterVolume, value);
-    public void VolumeBackground(float value) => NewValue(MixerGroup.MusicVolume, ref gameStats.musicVolume, value);
-    public void VolumeEffects(float value) => NewValue(MixerGroup.EffectsVolume, ref gameStats.effectsVolume, value);
+    public void VolumeMaster(float value) => NewValue(MixerGroup.MasterVolume, ref musicStats.master.volume, value);
+    public void VolumeBackground(float value) => NewValue(MixerGroup.MusicVolume, ref musicStats.music.volume, value);
+    public void VolumeEffects(float value) => NewValue(MixerGroup.EffectsVolume, ref musicStats.effects.volume, value);
     #endregion
 
     #region Выбор Snapshots
