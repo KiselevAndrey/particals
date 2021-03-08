@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public enum MusicType { Master, Music, Effects }
-
 public class MusicManager : MonoBehaviour
 {
     [Header("Музыка")]
