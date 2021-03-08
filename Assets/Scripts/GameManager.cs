@@ -178,5 +178,7 @@ public class GameManager : MonoBehaviour
 
     #region Доп функции
     public void ResetRecord() => gameStats.record = 0f;
+
+    public void Quit() => Application.Quit();
     #endregion
 }

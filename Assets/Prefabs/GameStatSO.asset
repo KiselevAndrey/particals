@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameStatSO
   m_EditorClassIdentifier: 
   record: 0
-  tutorialEnding: 0
+  tutorialEnding: 1

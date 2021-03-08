@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   play: 1
-  volume: 0.192
+  volume: 1
