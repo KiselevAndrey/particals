@@ -15,6 +15,7 @@ public static class TagsNames
 
 public static class MixerGroup
 {
-    public static string VolumeBackGround = "Volume BackGround";
-    public static string VolumeMaster = "Volume Master";
+    public static string MusicVolume = "Volume Music";
+    public static string MasterVolume = "Volume Master";
+    public static string EffectsVolume = "Volume Effects";
 }
