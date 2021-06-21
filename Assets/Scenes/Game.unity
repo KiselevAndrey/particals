@@ -6209,11 +6209,6 @@ PrefabInstance:
       propertyPath: prewarm
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1501009195695896328, guid: 08b2b18bbd876504fbd4ceb2c95c1db8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 747828544338444485, guid: 08b2b18bbd876504fbd4ceb2c95c1db8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6238,6 +6233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.radius.value
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501009195695896328, guid: 08b2b18bbd876504fbd4ceb2c95c1db8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b2b18bbd876504fbd4ceb2c95c1db8, type: 3}
